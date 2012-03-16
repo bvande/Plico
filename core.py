@@ -5,11 +5,11 @@ from selenium.webdriver.common.keys import Keys
 
 class PilcoTest():
     def __init__(self):
-        self.privateData = get()
+        self.data = get()
         self.urls = get(r'common\urls.config')
     
     def setUp(self):
-        self.driver = browserType(self.privateData['browser'])
+        self.driver = browserType(self.data['browser'])
 
     def tearDown(self):
         self.driver.close()        
@@ -22,7 +22,7 @@ class get(object):
             for x in f.readlines():
                 if x[0] != '#':
                     a = x.split('=')
-                    self.v[a[0].strip(' \'\"')] = a[1].strip(' \'\"')
+                    self.v[a[0].strip(' \'\"\n')] = a[1].strip(' \'\"\n')
     
     def __getattr__(self, key):
         return self.v.get(key, '')

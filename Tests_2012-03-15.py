@@ -1,18 +1,22 @@
 # March 15th, 2012
 import nose, core
-
 from nose.plugins.attrib import attr
-from nose import tools as t
 
 from common.operations import *
+from common.homepage import *
 
 @attr(_type="sta")
 class TestStatic(core.PilcoTest):
-    
     @attr(_area='login')
     def Test_Login(self):
-        assert login(self.driver, self.urls.home, 'bvandemerwea', 'snoopy')
+        assert login(self.driver, self.urls.home, self.data.user, self.data.password)
         assert logout(self.driver, self.urls.home)
+
+    @attr(_area='allinfo')
+    def Test_AllInfoSigned(self):
+        assert login(self.driver, self.urls.home, self.data.user, self.data.password)
+        assert onHomePage(self.driver, 'Signed Document')
+
     
 @attr(_type="bug")
 class TestBugs(core.PilcoTest):
