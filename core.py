@@ -2,11 +2,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-def browserType(s):
-    if s[0].lower() == 'f': return webdriver.Firefox()
-    if s[0].lower() == 'i': return webdriver.Ie()
-    return webdriver.Ie()
-
 class PilcoTest():
     def __init__(self):
         self.privateData = get()
@@ -32,3 +27,8 @@ class get(object):
         
     def __setitem__(self, key, value):
         self.v[key] = value
+
+def browserType(s):
+    if s[0].lower() == 'f': return webdriver.Firefox()
+    if s[0].lower() == 'i': return webdriver.Ie()
+    return webdriver.Ie()

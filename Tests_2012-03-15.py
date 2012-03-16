@@ -1,19 +1,24 @@
 # March 15th, 2012
-
 import nose, core
 from nose.plugins.attrib import attr
+from nose.tools import assert_in
 
-class TestClass(core.PilcoTest):
+from common import *
 
-    @attr(_type='bug', _priority='1', _area='navpane')
-    def test_true(self):
-        self.driver.get('http://google.com')
-        assert True
+@attr(_type="sta")
+class TestStatic(core.PilcoTest):
     
-    @attr(_type='enc', _priority="1", _area='navpane')
-    def test_yahoo(self):
-        self.driver.get('http://yahoo.com')
-        assert True
+    @attr(_area='login')
+    def Test_Login(self):
+        common.login(self.driver, 'bvandemerwea', 'snoopy')
+    
+@attr(_type="bug")
+class TestBugs(core.PilcoTest):
+    pass
+
+@attr(_type="enc")
+class TestEnc(core.PilcoTest):
+    pass
 
 if __name__ == "__main__":
     nose.run(argv=['-v'])
