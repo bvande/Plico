@@ -7,15 +7,15 @@ from common.homepage import *
 
 from core import get, browserType
 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import selenium.webdriver.support.ui as ui
+
 data = get()
 urls = get(r'common\urls.config')
 driver = browserType(data['browser'])
 
 login(driver, urls.home, data.user, data.password)
-while True:
-    print textOnPage(driver, 'Logged in as')
-    time.sleep(1)
-    
-derp = driver.find_elements_by_tag_name('a')
-for x in derp: print x.text
-
+wait = ui.WebDriverWait(driver, 10)
+wait.until(driver.find_element_by_id('topRightLinks'))
+driver.close()

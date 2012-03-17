@@ -7,16 +7,11 @@ from common.homepage import *
 
 @attr(_type="sta")
 class TestStatic(core.PilcoTest):
+    
     @attr(_area='login')
     def Test_Login(self):
         assert login(self.driver, self.urls.home, self.data.user, self.data.password)
         assert logout(self.driver, self.urls.home)
-
-    @attr(_area='allinfo')
-    def Test_AllInfoSigned(self):
-        assert login(self.driver, self.urls.home, self.data.user, self.data.password)
-        assert onHomePage(self.driver, 'Signed Document')
-
     
 @attr(_type="bug")
 class TestBugs(core.PilcoTest):

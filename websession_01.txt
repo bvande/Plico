@@ -1,0 +1,427 @@
+Python 2.7.2 (default, Jun 12 2011, 15:08:59) [MSC v.1500 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+>>> d = webdriver.Ie()
+>>> d.get('http://ducot.netdocuments.com')
+>>> d.find_element_by_id('username')
+<selenium.webdriver.remote.webelement.WebElement object at 0x02BC8F50>
+>>> e = d.find_element_by_id('username')
+>>> e.send_keys('bvandemerwea')
+>>> e = d.find_element_by_id('password')
+>>> e.send_keys('snoopy')
+>>> d.find_element_by_id('loginBtn').click()
+>>> d.find_element_by_id('loginBtn').click()
+>>> e = d.find_elements_by_class_name('lvName')
+>>> e
+[<selenium.webdriver.remote.webelement.WebElement object at 0x02BD2F30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E90>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2ED0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2F90>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2F70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2F10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2FF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2F50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2DF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2BD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2BF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2CF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D90>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2CB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C90>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2CD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2DB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2BB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A90>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2AD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD29F0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2030>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD24D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2AB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B90>]
+>>> for a in e: print a.text
+
+Signed Document
+aaa
+cabinet_logo
+File Types
+PHYS_2215_Lab4_ProjectileMotion_Pre
+'GO SELECT DOcID FROM DOCS--
+'GO SELECT DOcID FROM DOCS--
+blake 22
+NetBinder
+NetBinder
+NetBinder
+JPG
+aab2
+ACME Quote-Word 2003
+Email -
+english_crossroads-analysis
+logo
+ndImportLog201062122335
+newdoc
+Patent - Wikipedia, the free encyclopedia - old
+ZIP abcdefgab
+Cabinet Inbox
+ea
+Dump2a
+Empty Folder
+My Documents Backup
+My Dropbox
+bacaba
+Base Cabinet
+asdf
+asdf
+asdf
+Jason's Test Cases
+gtttr 2 documents
+Document Category 22345
+a
+#am
+Whatevea
+Dickenson plc
+a
+Dell
+Edge Communications
+Burlington Textile Corp
+Express Logistics and Transport
+Express Logistics and Transport
+>>> e = d.find_element_by_link_text('signed document')
+
+Traceback (most recent call last):
+  File "<pyshell#14>", line 1, in <module>
+    e = d.find_element_by_link_text('signed document')
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 234, in find_element_by_link_text
+    return self.find_element(by=By.LINK_TEXT, value=link_text)
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 645, in find_element
+    {'using': by, 'value': value})['value']
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 153, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python27\lib\selenium\webdriver\remote\errorhandler.py", line 147, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: u'Unable to find element with link text == signed document' 
+>>> e = d.find_element_by_link_text('Signed Document')
+>>> e.click()
+>>> d.click()
+
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    d.click()
+AttributeError: 'WebDriver' object has no attribute 'click'
+>>> d.send_keys(ENTER)
+
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    d.send_keys(ENTER)
+AttributeError: 'WebDriver' object has no attribute 'send_keys'
+>>> e.focus()
+
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    e.focus()
+AttributeError: 'WebElement' object has no attribute 'focus'
+>>> e = d.find_elements_by_class_name('lvName')
+>>> e = d.find_elements_by_class_name('svName')
+>>> e
+[]
+>>> e = d.find_elements_by_class_name('svItem')
+>>> e
+[<selenium.webdriver.remote.webelement.WebElement object at 0x02BD2DF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2E50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2C50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2DB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2CD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2D50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2BB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD29F0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B50>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD24D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A70>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2A10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2B10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BD2AB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD7D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD2D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD530>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDC30>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD310>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD630>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD3B0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD550>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD9B0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD710>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD8D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDAD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD7B0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDBD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDBB0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD790>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDF10>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD770>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDDCD0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD470>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD1D0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD6F0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BDD950>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BC8EF0>, <selenium.webdriver.remote.webelement.WebElement object at 0x02BC8630>]
+>>> for a in e: print a.get_attribute("data-itemspec")
+
+/Ducot5/a/x/m/j/~100817130516491.nev|1|bmp|Signed Document
+/Ducot5/3/n/l/c/^F120207175054345.nev|1|ndfld|aaa
+/Ducot7/7/g/a/r/~120229100326386.nev|1|png|cabinet_logo
+/Ducot5/2/7/d/9/^F100817124034251.nev|1|ndfld|File Types
+/Ducot5/v/c/f/5/~110203161829286.nev|1|odt|PHYS_2215_Lab4_ProjectileMotion_Pre
+/Ducot5/e/o/h/1/'GO SELECT DOcID FROM DOCS--.nev|0||'GO SELECT DOcID FROM DOCS--
+/Ducot5/u/3/i/d/'GO SELECT DOcID FROM DOCS--.nev|0||'GO SELECT DOcID FROM DOCS--
+/Ducot5/9/k/3/o/blake.nev|0||blake 22
+/Ducot5/v/4/7/y/NetBinder.nev|0||NetBinder
+/Ducot5/o/s/6/6/NetBinder.nev|0||NetBinder
+/Ducot5/v/4/7/y/NetBinder.nev|0||NetBinder
+/Ducot5/v/m/o/b/~100817130536462.nev|1|jpg|JPG
+/Ducot5/u/s/v/n/~110211160611097.nev|1|docx|aab2
+/Ducot5/j/q/q/k/~110126202233059.nev|1|doc|ACME Quote-Word 2003
+/Ducot5/b/l/o/z/~100913184912318.nev|1|htm|Email -
+/Ducot5/o/s/6/6/NetBinder.nev|67|odt|english_crossroads-analysis
+/Ducot5/o/s/6/6/NetBinder.nev|22|jpg|logo
+/Ducot5/o/s/6/6/NetBinder.nev|2|htm|ndImportLog201062122335
+/Ducot5/b/4/u/m/~101015171410432.nev|1|docx|newdoc
+/Ducot5/o/s/6/6/NetBinder.nev|20|docx|Patent - Wikipedia, the free encyclopedia - old
+/Ducot5/9/0/x/i/~100818130810017.nev|1|zip|ZIP abcdefgab
+/Ducot5/p/9/w/g/^F100811161232925.nev|1|ndfld|Cabinet Inbox
+/Ducot5/y/o/7/1/^F110504131009268.nev|1|ndfld|ea
+/Ducot5/4/5/8/9/^F110209200114045.nev|1|ndfld|Dump2a
+/Ducot5/x/h/w/1/^F100812162201945.nev|1|ndfld|Empty Folder
+/Ducot5/s/0/h/t/^F110328162933433.nev|1|ndfld|My Documents Backup
+/Ducot5/g/6/p/m/^F110209204513943.nev|1|ndfld|My Dropbox
+NG-ZNR5JEP8
+NG-F59TJUBQ
+/Ducot5/r/w/w/h/~101104184504801.nev|1|nddis|asdf
+/Ducot5/r/w/w/h/~101104184504801.nev|1|nddis|asdf
+/Ducot5/r/w/w/h/~101104184504801.nev|1|nddis|asdf
+/Ducot5/r/5/g/y/~110328175838265.nev|1|rtf|Jason's Test Cases
+/Ducot5/8/8/w/4/~110328160021473.nev|1|ndsq|gtttr 2 documents
+/Ducot5/7/h/u/1/~101023195817693.nev|1|ndsq|Document Category 22345
+/Ducot5/c/2/f/q/^W110112175531148.nev|1|ndws
+/Ducot5/n/q/y/2/^W110121165528720.nev|1|ndws
+/Ducot5/6/l/j/o/^W110321160320854.nev|1|ndws
+/Ducot5/a/k/x/8/^W110321160314776.nev|1|ndws
+/Ducot5/s/i/z/j/^W101116122159840.nev|1|ndws
+/Ducot5/d/x/v/v/^W110118154244666.nev|1|ndws
+/Ducot5/u/n/t/f/^W100624140451082.nev|1|ndws
+/Ducot5/h/x/1/e/^W100624135930243.nev|1|ndws
+/Ducot5/x/v/y/b/^W110511144757446.nev|1|ndws
+/Ducot5/d/m/7/v/^W110721130541024.nev|1|ndws
+>>> for a in e: print a.location()
+
+
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    for a in e: print a.location()
+TypeError: 'dict' object is not callable
+>>> e[0].location()
+
+Traceback (most recent call last):
+  File "<pyshell#29>", line 1, in <module>
+    e[0].location()
+TypeError: 'dict' object is not callable
+>>> e[0]
+<selenium.webdriver.remote.webelement.WebElement object at 0x02BD2DF0>
+>>> dir(e[0].location())
+
+Traceback (most recent call last):
+  File "<pyshell#31>", line 1, in <module>
+    dir(e[0].location())
+TypeError: 'dict' object is not callable
+>>> dir(e[0].location)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
+>>> e[0].location
+{u'y': 234, u'x': 220}
+>>> for a in e: print a.location['x'], a.location['y']
+
+220 234
+220 267
+220 300
+220 332
+220 365
+220 398
+220 431
+220 464
+220 497
+220 529
+220 562
+220 621
+220 679
+220 712
+220 744
+220 777
+220 810
+220 843
+220 876
+220 909
+220 942
+581 234
+581 267
+581 300
+581 332
+581 365
+581 398
+581 456
+581 489
+581 547
+581 606
+581 639
+801 234
+801 267
+801 300
+801 358
+801 391
+801 423
+801 456
+801 489
+801 522
+801 555
+801 588
+801 621
+801 653
+>>> b = d.find_element_by_class_name('svOptEl')
+>>> len(b)
+
+Traceback (most recent call last):
+  File "<pyshell#38>", line 1, in <module>
+    len(b)
+TypeError: object of type 'WebElement' has no len()
+>>> b = d.find_elements_by_class_name('svOptEl')
+>>> len(b)
+33
+>>> len(e)
+45
+>>> for a in b: print a.location['x'], a.location['y']
+
+548 234
+548 267
+548 300
+548 332
+548 365
+548 398
+548 431
+548 464
+548 497
+548 529
+548 562
+548 621
+548 679
+548 712
+548 744
+548 777
+548 810
+548 843
+548 876
+548 909
+548 942
+771 234
+771 267
+771 300
+771 332
+771 365
+771 398
+771 547
+771 606
+771 639
+1025 234
+1025 267
+1025 300
+>>> b[0].click()
+>>> b.send_keys(KEY.DOWN_ARROW)
+
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    b.send_keys(KEY.DOWN_ARROW)
+AttributeError: 'list' object has no attribute 'send_keys'
+>>> b[0].key_down()
+
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    b[0].key_down()
+AttributeError: 'WebElement' object has no attribute 'key_down'
+>>> b[0].send_keys(DOWN)
+
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    b[0].send_keys(DOWN)
+NameError: name 'DOWN' is not defined
+>>> b[0].send_keys(Keys.DOWN)
+
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    b[0].send_keys(Keys.DOWN)
+NameError: name 'Keys' is not defined
+>>> b[0].send_keys(KEYS.DOWN)
+
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    b[0].send_keys(KEYS.DOWN)
+NameError: name 'KEYS' is not defined
+>>> from selenium.webdriver.common.keys import Keys
+>>> b[0].send_keys(Keys.DOWN)
+>>> b[0].send_keys(Keys.ENTER)
+>>> Keys.ENTER
+u'\ue007'
+>>> from selenium.webdriver.common import alert
+>>> alert.Alert.send_keys(Keys.ENTER)
+
+Traceback (most recent call last):
+  File "<pyshell#55>", line 1, in <module>
+    alert.Alert.send_keys(Keys.ENTER)
+TypeError: unbound method send_keys() must be called with Alert instance as first argument (got unicode instance instead)
+>>> d.Alert.send_keys(Keys.ENTER)
+
+Traceback (most recent call last):
+  File "<pyshell#56>", line 1, in <module>
+    d.Alert.send_keys(Keys.ENTER)
+AttributeError: 'WebDriver' object has no attribute 'Alert'
+>>> Alert(d).send_keys(Keys.ENTER)
+
+Traceback (most recent call last):
+  File "<pyshell#57>", line 1, in <module>
+    Alert(d).send_keys(Keys.ENTER)
+NameError: name 'Alert' is not defined
+>>> alert.Alert(d).send_keys(Keys.ENTER)
+
+Traceback (most recent call last):
+  File "<pyshell#58>", line 1, in <module>
+    alert.Alert(d).send_keys(Keys.ENTER)
+  File "C:\Python27\lib\selenium\webdriver\common\alert.py", line 39, in send_keys
+    self.driver.execute(Command.SET_ALERT_VALUE, {'text': keysToSend})
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 153, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python27\lib\selenium\webdriver\remote\errorhandler.py", line 147, in check_response
+    raise exception_class(message, screen, stacktrace)
+ElementNotVisibleException: Message: u'Modal dialog did not have a text box - maybe it was an alert' 
+>>> alert.Alert(d).accept()
+>>> e = d.find_element_by_id('topUserNameDisp')
+>>> e.location
+{u'y': 30, u'x': 609}
+>>> e.get_attribute('title')
+u'Previous login was Friday, March 16, 2012 7:52:01 PM.'
+>>> e = d.find_element_class_name('nuTitle')
+
+Traceback (most recent call last):
+  File "<pyshell#63>", line 1, in <module>
+    e = d.find_element_class_name('nuTitle')
+AttributeError: 'WebDriver' object has no attribute 'find_element_class_name'
+>>> e = d.find_element_by_class_name('nuTitle')
+>>> e.text
+u'Home'
+>>> e.location
+{u'y': 152, u'x': 201}
+>>> e.size()
+
+Traceback (most recent call last):
+  File "<pyshell#67>", line 1, in <module>
+    e.size()
+TypeError: 'dict' object is not callable
+>>> w
+
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    w
+NameError: name 'w' is not defined
+>>> e
+<selenium.webdriver.remote.webelement.WebElement object at 0x02BDDBD0>
+>>> e.id
+u'f6cf644a-1f3a-40b0-bfb9-1c311a4de00e'
+>>> e.parent
+<selenium.webdriver.ie.webdriver.WebDriver object at 0x02A150D0>
+>>> e.parent.text
+
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    e.parent.text
+AttributeError: 'WebDriver' object has no attribute 'text'
+>>> e.click()
+>>> e = d.find_element_by_class_name('rndBtn whiteBtn')
+
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    e = d.find_element_by_class_name('rndBtn whiteBtn')
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 330, in find_element_by_class_name
+    return self.find_element(by=By.CLASS_NAME, value=name)
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 645, in find_element
+    {'using': by, 'value': value})['value']
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 153, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python27\lib\selenium\webdriver\remote\errorhandler.py", line 147, in check_response
+    raise exception_class(message, screen, stacktrace)
+NoSuchElementException: Message: u'Unable to find element with class name == rndBtn whiteBtn' 
+>>> e = d.find_element_by_css_selector('a.rndBtn.whiteBtn')
+>>> e.click()
+>>> e = d.find_element_by_class_name('opdButtonSet')
+>>> e.click()
+
+Traceback (most recent call last):
+  File "<pyshell#78>", line 1, in <module>
+    e.click()
+  File "C:\Python27\lib\selenium\webdriver\remote\webelement.py", line 45, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Python27\lib\selenium\webdriver\remote\webelement.py", line 194, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Python27\lib\selenium\webdriver\remote\webdriver.py", line 153, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python27\lib\selenium\webdriver\remote\errorhandler.py", line 147, in check_response
+    raise exception_class(message, screen, stacktrace)
+ElementNotVisibleException: Message: u'Cannot click on element' 
+>>> e = d.find_element_by_link_text('Cancel')
+>>> e.click()
+>>> e = d.find_element_by_css_selector('a.rndBtn.whiteBtn')
+>>> e.click()
+>>> e.click()
+>>> e = d.find_element_by_link_text('Save Changes')
+>>> e.click()
+d.re
+>>> d.refresh()
+>>> d.current_url
+u'http://ducot.netdocuments.com/neWeb2/docCent.aspx#layoutOkBtn'
+>>> d.capabilities
+{u'takesScreenshot': True, u'cssSelectorsEnabled': True, u'javascriptEnabled': True, u'platform': u'WINDOWS', u'browserName': u'internet explorer', u'version': u'9', u'nativeEvents': True, u'handlesAlerts': True}
+>>> d.save_screenshot('test.png')
+True
+>>> 

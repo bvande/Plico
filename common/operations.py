@@ -13,18 +13,11 @@ def textOnPage(pdriver, txt, iterations=15):
 
     
 def login(pdriver, purl, pname, ppass):
-    """
-    Takes a browser driver, valid username, and password and will log you into the NetDocuments service.
-    """
     try:
         pdriver.get(purl)
-        e = pdriver.find_element_by_id("username")
-        e.send_keys(pname)
-        e = pdriver.find_element_by_id("password")
-        e.send_keys(ppass)
+        pdriver.find_element_by_id("username").send_keys(pname)
+        pdriver.find_element_by_id("password").send_keys(ppass)
         pdriver.find_element_by_id("loginBtn").click()
-        WebDriverWait(pdriver, 10).until(pdriver.find_element_by_link_text("Logout"))
-
     except:
         return False
     return True
